@@ -1,0 +1,8 @@
+# directories
+# -----------
+spack/
+.vscode
+
+# files
+# -----
+*.pyc
