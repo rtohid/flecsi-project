@@ -1,6 +1,7 @@
 # directories
 # -----------
 spack/
+flecsi/
 .vscode
 
 # files
