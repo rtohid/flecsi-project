@@ -7,7 +7,6 @@ FROM fedora:latest
 
 ADD ./scripts /scripts
 
-
 # Install Packages
 # ----------------
 RUN dnf -y update
