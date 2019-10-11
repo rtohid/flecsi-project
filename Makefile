@@ -4,27 +4,27 @@ FLECSI_BRANCH?=hpx
 all: help
 
 help:
-	@echo "\
+	@echo -e "\
 	spack: \n\
 		if [ ! -d "./spack" ]; then git clone https://github.com/rtohid/spack.git; fi \n\
 		cd ./spack/ && git checkout $(SPACK_BRANCH) \n\
-\n\
-	flecsi:\n
-	if [ ! -d "./flecsi" ]; then git clone https://github.com/rtohid/flecsi.git; fi
-	cd ./flecsi/ && git checkout $(FLECSI_BRANCH)
-
+	\n\
+	flecsi:\n\
+		if [ ! -d "./flecsi" ]; then git clone https://github.com/rtohid/flecsi.git; fi \n\
+		cd ./flecsi/ && git checkout $(FLECSI_BRANCH) \n\
 	build: spack flecsi \n\
 		docker-compose up -d \n\
-\n\
+	\n\
 	run: build \n\
 		docker exec -it flecsi-stellar /bin/bash \n\
-\n\
+	\n\
 	stop: \n\
 		docker-compose down \n\
-\n\
+	\n\
 	prune: \n\
 		docker system prune -f \n\
-	"
+ 	"
+
 spack:
 	if [ ! -d "./spack" ]; then git clone https://github.com/rtohid/spack.git; fi
 	cd ./spack/ && git checkout $(SPACK_BRANCH)
@@ -34,7 +34,7 @@ flecsi:
 	cd ./flecsi/ && git checkout $(FLECSI_BRANCH)
 
 build: spack flecsi
-	docker-compose up -d
+	docker-compose up --force-recreate -d
 
 run: build
 	docker exec -it flecsi-stellar /bin/bash
