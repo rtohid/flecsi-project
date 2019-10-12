@@ -34,7 +34,7 @@ flecsi:
 	cd ./flecsi/ && git checkout $(FLECSI_BRANCH)
 
 build: spack flecsi
-	docker-compose up --force-recreate -d
+	docker-compose up -d
 
 run: build
 	docker exec -it flecsi-stellar /bin/bash
