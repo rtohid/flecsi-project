@@ -5,7 +5,8 @@
 
 FROM fedora:latest
 
-ADD ./scripts /scripts
+RUN mkdir /scripts
+COPY ./scripts /scripts
 
 # Install Packages
 # ----------------
@@ -23,10 +24,14 @@ RUN chmod +x /usr/bin/doxy-coverage
 RUN groupadd -r stellar
 RUN useradd -r -m -g stellar -G wheel stellar
 RUN echo '%wheel ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+RUN chmod +x /scripts/setenv.sh
 USER stellar
+
+RUN echo "sudo chown -R stellar:stellar /home/stellar/" >> /home/stellar/.bashrc
+RUN echo "source /scripts/setenv.sh" >> /home/stellar/.bashrc
 
 RUN pip3 install --user codecov coverxygen gcovr Sphinx recommonmark sphinx_rtd_theme breathe
 
+
 WORKDIR /home/stellar
 CMD sleep infinity
-

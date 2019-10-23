@@ -3,7 +3,6 @@ bzip2
 bash-completion
 powerline
 powerline-fonts
-make
 cmake
 automake
 autoconf
@@ -18,24 +17,16 @@ llvm
 compiler-rt
 clang-devel
 llvm-devel
-texlive-epstopdf-bin
 ghostscript-core
-texlive-latex-bin-bin
-texlive-collection-fontsrecommended
-texlive-fancyhdr
 findutils
-texlive-booktabs
 gdb
 wget
 curl
 lcov
 boost-devel
 hwloc-devel
-flex
 patch
 doxygen
-graphviz
-pandoc
 cereal-devel
 lapack-devel
 environment-modules 
@@ -50,4 +41,3 @@ python3-devel
 python3-pytest
 git
 vim-enhanced
-
